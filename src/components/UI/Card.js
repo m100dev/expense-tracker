@@ -12,6 +12,6 @@ function Card(props) {
 
     // props.children is the content that this compenent wraps
     return <div className={classes}>{props.children}</div>;
-}
+};
 
 export default Card;

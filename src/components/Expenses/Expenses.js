@@ -17,11 +17,11 @@ function Expenses(props) {
                         amount = {expense.amount}
                         date = {expense.date}
                     />
-                )
+                );
             })  
         }</Card>
-    )
-}
+    );
+};
           
 export default Expenses;
 
