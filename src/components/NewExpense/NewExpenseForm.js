@@ -46,8 +46,10 @@ const NewExpenseForm = (props) => {
     const submitHandler = (event) => {
         event.preventDefault();
         
+        //store user input data as an expenseData constant
         const expenseData = userInput;
 
+        //we're calling this function that we passed down from the parent to lift up the state.
         props.onSaveExpenseData(expenseData);
 
         setUserInput({
@@ -57,7 +59,7 @@ const NewExpenseForm = (props) => {
         });
     };
 
-    //We use two way binding to clear the inputs after a submit by updating the input value
+    //We use two way binding to clear the inputs on submit by updating the value attribute
 
     return (
         <form onSubmit={submitHandler}>
