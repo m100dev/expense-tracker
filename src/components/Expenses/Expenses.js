@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Card from '../UI/Card';
 import ExpensesFilter from './ExpensesFilter';
-import ExpenseItem from './ExpenseItem';
+import ExpensesList from './ExpensesList';
 
 import './Expenses.css';
 
@@ -21,23 +21,8 @@ function Expenses(props) {
 
     return (
         <Card className='expenses'>
-            <ExpensesFilter selected={filteredYear} onChangeFilter={filterChangeHandler} />
-            
-            {filteredExpenses.length === 0 && <p>There were no expenses found for this year. Please add an expense.</p>}
-            
-            { // using a shorthand way of writing a condtional statement
-            filteredExpenses.length > 0 && 
-                filteredExpenses.map( expenseItem => {
-                    return (
-                        <ExpenseItem
-                            key = {expenseItem.id}
-                            title = {expenseItem.title}
-                            amount = {expenseItem.amount}
-                            date = {expenseItem.date}
-                        />
-                    );
-                })
-            }
+            <ExpensesFilter selected={filteredYear} onChangeFilter={filterChangeHandler} />       
+            <ExpensesList items = {filteredExpenses} />
         </Card>
     );
 };
