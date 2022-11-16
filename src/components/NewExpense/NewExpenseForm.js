@@ -47,7 +47,11 @@ const NewExpenseForm = (props) => {
         event.preventDefault();
         
         //store user input data as an expenseData constant
-        const expenseData = userInput;
+        const expenseData = {
+            title: userInput.enteredTitle,
+            amount: userInput.enteredAmount,
+            date: userInput.enteredDate
+        };
 
         //we're calling this function that we passed down from the parent to lift up the state.
         props.onSaveExpenseData(expenseData);
