@@ -4,6 +4,13 @@ import './NewExpenseForm.css';
 
 const NewExpenseForm = (props) => {
 
+    // This will be used to dynamically render the form when the user first clicks on add expense
+    const[showExpenseForm, setShowExpenseForm] = useState(false);
+
+    const addNewExpenseHandler = () => {
+        setShowExpenseForm((prevShowExpenseState) => !prevShowExpenseState);
+    }
+
     //const [enteredTitle, setEnteredTitle] = useState('');
     //const [enteredAmount, setEnteredAmount] = useState('');
     //const [enteredDate, setEnteredDate] = useState('');
@@ -63,33 +70,42 @@ const NewExpenseForm = (props) => {
         });
     };
 
-    //We use two way binding to clear the inputs on submit by updating the value attribute
-
-    return (
-        <form onSubmit={submitHandler}>
-            <div className='new-expense__controls'>
-
-                <div className='new-expense__control'>
-                    <label>Title</label>
-                    <input type='text' value={userInput.enteredTitle} onChange={titleChangeHandler}/>
-                </div>
-
-                <div className="new-expense__control">
-                    <label>Amount</label>
-                    <input type='number' min='0.01' step='0.01' value={userInput.enteredAmount} onChange={amountChangeHandler}/>
-                </div>
-
-                <div className='new-expense__control'>
-                    <label>Date</label>
-                    <input type='date' min='2020-01-01' step='2022-12-31' value={userInput.enteredDate} onChange={dateChangeHandler}/>
-                </div>
-            </div>
-
-            <div className='new-expense__actions'>
-                <button type='submit'>Add Expense</button>
-            </div>
-        </form>
+    let ExpenseFormContent = (
+        <div className='new-expense__actions' style={{textAlign: 'center'}}>
+            <button onClick={addNewExpenseHandler}>Add a New Expense</button>
+        </div>
     );
+
+    if(showExpenseForm === true) {
+        ExpenseFormContent = (
+            <form onSubmit={submitHandler}>
+                <div className='new-expense__controls'>
+    
+                    <div className='new-expense__control'>
+                        <label>Title</label>
+                        <input type='text' value={userInput.enteredTitle} onChange={titleChangeHandler}/>
+                    </div>
+    
+                    <div className="new-expense__control">
+                        <label>Amount</label>
+                        <input type='number' min='0.01' step='0.01' value={userInput.enteredAmount} onChange={amountChangeHandler}/>
+                    </div>
+    
+                    <div className='new-expense__control'>
+                        <label>Date</label>
+                        <input type='date' min='2020-01-01' step='2022-12-31' value={userInput.enteredDate} onChange={dateChangeHandler}/>
+                    </div>
+                </div>
+    
+                <div className='new-expense__actions'>
+                    <button type='button' onClick={addNewExpenseHandler}>Cancel</button>
+                    <button type='submit'>Add Expense</button>
+                </div>
+            </form>
+        );
+    };
+
+    return ExpenseFormContent;
 };
 
 export default NewExpenseForm;
