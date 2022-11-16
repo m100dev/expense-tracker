@@ -13,14 +13,21 @@ function Expenses(props) {
 
     const filterChangeHandler = selectedYear => {
         setFilteredYear(selectedYear);
-    }
+    };
+
+    const filteredExpenses = expenses.filter(expenseItem => {
+        return expenseItem.date.getFullYear().toString() === filteredYear;
+    });
 
     return (
         <Card className='expenses'>
             <ExpensesFilter selected={filteredYear} onChangeFilter={filterChangeHandler} />
-            {
-            expenses.map( expenseItem => {
-                if(expenseItem.date.getFullYear().toString() === filteredYear) {
+            
+            {filteredExpenses.length === 0 && <p>There were no expenses found for this year. Please add an expense.</p>}
+            
+            { // using a shorthand way of writing a condtional statement
+            filteredExpenses.length > 0 && 
+                filteredExpenses.map( expenseItem => {
                     return (
                         <ExpenseItem
                             key = {expenseItem.id}
@@ -29,9 +36,9 @@ function Expenses(props) {
                             date = {expenseItem.date}
                         />
                     );
-                } 
-            })  
-        }</Card>
+                })
+            }
+        </Card>
     );
 };
           
