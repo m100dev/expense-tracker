@@ -10,7 +10,7 @@ function Expenses(props) {
     const expenses = props.expenses;
 
     //We'll use the filteredYear state to conditionally render Expense item components that match the selected year.
-    const [filteredYear, setFilteredYear] = useState('2020');
+    const [filteredYear, setFilteredYear] = useState('2023');
 
     const filterChangeHandler = selectedYear => {
         setFilteredYear(selectedYear);
