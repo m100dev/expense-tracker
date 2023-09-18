@@ -9,11 +9,11 @@ I created the project in tandem with a tutorial I followed. This project helped 
 - React Hooks
 - React Props
 
-# Other
+## Other
 JS Date Object Methods
 JS Math Object Methods
 
-# How to run the project locally
+## How to run the project locally
 1. First clone the repo to a local directory using the `git clone` command in your terminal. If you don't have git installed, visit the [Git Website](https://git-scm.com/) and follow the documentation to "git" it.
 2. Open git BASH and navigate to the folder of the project. Run `npm i` to install the dependencies.
 3. To start the project, run `npm run start`. This will run the script which will start the server on your local machine. You'll then be able to interact with the application.
